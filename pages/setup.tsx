@@ -14,8 +14,8 @@ function Install() {
     return (
         <Stack gap="12">
             <Box>
-                <Heading>Hygraph Boilerplate App</Heading>
-                <Text>This is an example app</Text>
+                <Heading>Setting up the Remote Source Data Picker</Heading>
+                <Text>This App uses top-level Remote Source Fields to create pickers for various models</Text>
                 <Button
                     onClick={() =>
                         updateInstallation({ status: "COMPLETED", config: {} })
@@ -33,8 +33,8 @@ function Configure() {
     return (
         <Stack gap="12">
             <Box>
-                <Heading>Hygraph Boilerplate App</Heading>
-                <Text>This is an example app</Text>
+                <Heading>Setting up the Remote Source Data Picker</Heading>
+                <Text>This App uses top-level Remote Source Fields to create pickers for various models</Text>
                 <Button
                     onClick={() =>
                         updateInstallation({ status: "COMPLETED", config: {} })
