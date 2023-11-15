@@ -50,16 +50,18 @@ function FieldElement() {
         getItems(context.environment.endpoint, context.environment.authToken, query)
             .then((response) => response.json())
             .then((data) => {
-                setItems(data.data[QUERY_ID][DATA_KEY])
+                const transformedData = data.data[QUERY_ID][DATA_KEY].map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))
+                setItems(transformedData)
                 setLoading(false)
         })
       }, []);
     return (
         <Stack space="m">
             {loading ? <p>Loading...</p> : <Select
-                defaultValue={value}
-                onChange={(value) => onChange(value.value)}
-                options={items.map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))}
+                defaultValue={items.find(item => item.value == value)}
+                onChange={(value) =>  onChange((typeof value.value === "string") ? value.value : String(value.value))}
+                
+                options={items}
             />}
  
             <Stack space="s">

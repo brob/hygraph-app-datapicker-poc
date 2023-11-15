@@ -1,5 +1,5 @@
 import { useFieldExtension, Wrapper } from "@graphcms/app-sdk-react";
-import { Input, Label, MultiSelect, Stack, Text } from "@hygraph/baukasten";
+import { Input, Label, Stack } from "@hygraph/baukasten";
 import { useState, useEffect } from "react";
 import Select from 'react-select';
 
@@ -36,7 +36,8 @@ function FieldElement() {
         getItems(context.environment.endpoint, context.environment.authToken, query)
             .then((response) => response.json())
             .then((data) => {
-                setItems(data.data[QUERY_ID])
+                const transformedData = data.data[QUERY_ID][DATA_KEY].map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))
+                setItems(transformedData)
                 setLoading(false)
         })
       }, []);
@@ -45,9 +46,9 @@ function FieldElement() {
         <Stack space="m">
 
             {items && <Select
-                defaultValue={value}
+                defaultValue={items.find(item => item.value == value)}
                 onChange={(value) => onChange(value.value)}
-                options={items.map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))}
+                options={items}
             />}
             <Stack space="s">
             <Label>Current Value</Label>
