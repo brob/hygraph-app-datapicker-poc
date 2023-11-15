@@ -43,14 +43,21 @@ function FieldElement() {
       }, []);
 
     return (
-        <Stack space="m">
+        <Stack marginTop={6} gap={36}>
 
-            {items && <Select
-                defaultValue={items.find(item => item.value == value)}
-                onChange={(value) => onChange(value.value)}
-                options={items}
-            />}
-            <Stack space="s">
+
+            {items && (
+                <Stack gap={6}>
+                <Label>Select an item</Label>
+                <Select
+                    defaultValue={items.find(item => item.value == value)}
+                    onChange={(value) =>  onChange((typeof value.value === "string") ? value.value : String(value.value))}
+                    
+                    options={items}
+                />
+                </Stack>
+            )}
+            <Stack gap={6}>
             <Label>Current Value</Label>
             <Input
                 value={value}

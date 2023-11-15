@@ -56,15 +56,20 @@ function FieldElement() {
         })
       }, []);
     return (
-        <Stack space="m">
-            {loading ? <p>Loading...</p> : <Select
-                defaultValue={items.find(item => item.value == value)}
-                onChange={(value) =>  onChange((typeof value.value === "string") ? value.value : String(value.value))}
-                
-                options={items}
-            />}
+        
+        <Stack marginTop={6} gap={36}>
+             {loading ? <p>Loading...</p> : (
+             <Stack gap={6}>
+                <Label>Select an item</Label>
+                <Select
+                    defaultValue={items.find(item => item.value == value)}
+                    onChange={(value) =>  onChange((typeof value.value === "string") ? value.value : String(value.value))}
+                    
+                    options={items}
+                />
+                </Stack>)}
  
-            <Stack space="s">
+            <Stack gap={6}>
             <Label>Current Value</Label>
             <Input
                 value={value}
@@ -73,7 +78,8 @@ function FieldElement() {
             />
             </Stack>
         </Stack>
-    );
+
+);
 }
 
 export default function Field() {

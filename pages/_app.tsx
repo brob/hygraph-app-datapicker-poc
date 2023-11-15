@@ -5,7 +5,7 @@ import "@fontsource/inter/variable-full.css";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <BaukastenProvider>
+        <BaukastenProvider global>
             <Component {...pageProps} />
         </BaukastenProvider>
     );
