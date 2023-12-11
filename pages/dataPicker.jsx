@@ -36,7 +36,7 @@ function FieldElement() {
         getItems(context.environment.endpoint, context.environment.authToken, query)
             .then((response) => response.json())
             .then((data) => {
-                const transformedData = data.data[QUERY_ID][DATA_KEY].map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))
+                const transformedData = data.data[QUERY_ID].map(item => ({value: item[ID_FIELD], label: item[TITLE_FIELD] }))
                 setItems(transformedData)
                 setLoading(false)
         })
