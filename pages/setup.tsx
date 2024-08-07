@@ -5,7 +5,7 @@ import { CodeBlock, dracula } from "react-code-blocks";
 function SetupElement() {
   const { installation } = useApp();
   if (installation.status === "COMPLETED") {
-    return <Configure />;
+    return <Install />;
   }
   return <Install />;
 }
@@ -14,7 +14,6 @@ function Install() {
   const { updateInstallation } = useApp();
   return (
     <Stack gap="12">
-      <Box>
         <Heading>Setting up the Remote Source Data Picker</Heading>
         <Text>
           This App uses top-level Remote Source Fields to create pickers for
@@ -27,15 +26,14 @@ function Install() {
         >
           Install App
         </Button>
-      </Box>
     </Stack>
   );
 }
 
 function Configure() {
   return (
+    <div style={{ maxWidth: "84ch" }}>
       <Stack gap="12">
-        <Box style={{ "maxWidth": "84ch"}}>
           <Heading>Hygraph Top-Level Remote Source Data Picker App</Heading>
           <div className="[&amp;_img]:rounded [&amp;>*:first-child]:mt-0 [&amp;>*:last-child]:mb-0 [&amp;_h1+*]:mt-0 [&amp;_h2+*]:mt-0 [&amp;_h3+*]:mt-0 [&amp;_h4+*]:mt-0 [&amp;_p:empty]:hidden">
             <p className="my-2xl">
@@ -106,10 +104,8 @@ function Configure() {
               sync with what's available to your front-end API, as well.
             </p>
           </div>
-          </div>
-
-        </Box>
       </Stack>
+    </div>
   );
 }
 
